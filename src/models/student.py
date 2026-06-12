@@ -8,15 +8,9 @@ class Student(Base):
     __tablename__ = "students"
 
     id = Column(Integer, primary_key=True, index=True)
-    name = Column(String)
+    student_name = Column(String)
     age = Column(Integer)
 
-    school_id = Column(
-        Integer,
-        ForeignKey("schools.id")
-    )
+    school_id = Column(Integer, ForeignKey("schools.id"))
 
-    school = relationship(
-        "School",
-        back_populates="students"
-    )
+    school = relationship("School", back_populates="students")

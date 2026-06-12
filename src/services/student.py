@@ -1,19 +1,11 @@
-from src.models.student import Student
+from src.db.school_student import SchoolStudentCrud
 
 
 class StudentService:
 
     @classmethod
-    def create_student(cls, student_req, db):
-
-        student = Student(
-            name=student_req.name,
-            age=student_req.age,
-            school_id=student_req.school_id
+    def create_student(cls, student_req, session):
+        return SchoolStudentCrud.create_student(
+            student_req,
+            session
         )
-
-        db.add(student)
-        db.commit()
-        db.refresh(student)
-
-        return student

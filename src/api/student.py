@@ -29,7 +29,7 @@ def create_student(
             "message": "Student created successfully",
             "data": {
                 "id": student.id,
-                "name": student.name,
+                "name": student.student_name,
                 "age": student.age,
                 "school_id": student.school_id
             }
