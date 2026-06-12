@@ -1,22 +1,21 @@
 from src.models.school import School
 from src.models.student import Student
 
+from src.db.base_curd import BaseCrud
 
-class SchoolStudentCrud:
 
-    @classmethod
-    def save(cls, obj, db):
-        db.add(obj)
-        db.commit()
-        db.refresh(obj)
-        return obj
+class SchoolCrud(BaseCrud):
 
     @classmethod
     def create_school(cls, school_req, db):
         school = School(
             school_name=school_req.school_name
         )
+
         return cls.save(school, db)
+
+
+class StudentCrud(BaseCrud):
 
     @classmethod
     def create_student(cls, student_req, db):
@@ -25,4 +24,5 @@ class SchoolStudentCrud:
             age=student_req.age,
             school_id=student_req.school_id
         )
+
         return cls.save(student, db)
